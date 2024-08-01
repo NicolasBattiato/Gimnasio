@@ -1,32 +1,24 @@
-version: '3.12'
-
+version: "0.19"
 services:
-  app:
+  aplicacion:
+    container_name: aplicacionGim
     build: .
-    volumes:
-      - .:/app
-    working_dir: /app
-    command: ["python", "Main.py"]
-    depends_on:
-      - db
-    environment:
-      - _HOST=db
-      - _DATABASE=gimnasio
-      - _USERNAME=postgres
-      - _PASSWORD=Nico0603
-      - _DB_PORT=5432
-
-
-
-  db:
+    ports:
+      - "5000:5000"
+    links:
+      - Psql
+  Psql:
     image: postgres:16.1
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Nico0603
-      POSTGRES_DB: gimnasio
+    container_name: PsqlGim
     ports:
       - "5432:5432"
+    environment:
+      - POSTGRES_USER= postgres
+      - POSTGRES_PASSWORD= Nico0603
+      - POSTGRES_DB= gimnasio
+
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgData:/var/lib/postgresql/data
+
 volumes:
-  pgdata:
+  pgData:
