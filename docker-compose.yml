@@ -3,10 +3,22 @@ services:
   aplicacion:
     container_name: aplicacionGim
     build: .
-    ports:
-      - "5000:5000"
+    environment:
+      - DB_HOST=db
+      - DB_DATABASE=gimnasio
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=Nico0603
+      - DB_PORT=5432
     links:
       - Psql
+    depends_on:
+      - Psql
+    networks:
+      - gimnasio-net
+
+    volumes:
+      - "C:/Users/Nico/Documentos/GimnasioApp:/app"
+
   Psql:
     image: postgres:16.1
     container_name: PsqlGim
@@ -16,9 +28,14 @@ services:
       - POSTGRES_USER= postgres
       - POSTGRES_PASSWORD= Nico0603
       - POSTGRES_DB= gimnasio
+    networks:
+      - gimnasio-net
+
 
     volumes:
       - pgData:/var/lib/postgresql/data
 
 volumes:
   pgData:
+networks:
+  gimnasio-net:

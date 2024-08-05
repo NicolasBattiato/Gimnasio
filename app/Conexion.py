@@ -8,7 +8,7 @@ class Conexion:
     _USERNAME = "postgres"
     _PASSWORD = "Nico0603"
     _DB_PORT = "5432"
-    _HOST = "localhost"
+    _HOST = "Psql"
     _MIN = 1
     _MAX = 5
     _pool = None
