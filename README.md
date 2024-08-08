@@ -24,6 +24,7 @@ Esta aplicación conecta con PostgreSQL mediante un pool de conexiones en Python
   - Docker-compose.yml
 
 ## Uso
+El archivo "Main.py" contiene un menu desplegable con diferentes campos para realizar una operacion. En la carpeta app se encuentran las clases que conforman el programa.
 ### Ejemplo
 
 ```Python
